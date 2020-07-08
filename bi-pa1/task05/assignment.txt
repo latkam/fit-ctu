@@ -1,0 +1,14 @@
+Úkolem je vytvořit program, který pomůže obsluze radaru řídící věže.
+
+Při řízení letového provozu je důležité hlídat potenciální kolize letadel. Radary snímají pozice letadel a program kontroluje vzdálenosti mezi letadly. Chceme realizovat program, který pro zadané souřadnice letadel rozhodne, kde hrozí potenciální kolize, tedy která letadla jsou k sobě nejblíže.
+
+Vstupem program jsou souřadnice letadel. Pro jednoduchost předpokládáme, že souřadnice letadle jsou rovinné, tedy pozice letadla je určena dvojicí čísel x a y. Souřadnice mají podobu desetinných čísel. Za souřadnicí následuje název letu, ten je tvořen řetězcem libovolné délky, název je ukončen odřádkováním. Tedy na každé řádce na vstupu jsou umístěné informace o právě jednom letu. Takto může být na vstupu zadáno velmi mnoho letů, jejich počet není dopředu známý. Zadávání letů končí s aktivním koncem souboru (EOF na stdin). Formát vstupu je zřejmý z ukázek níže.
+
+Výstupem program je vzdálenost dvojice nejbližších letadel. V této (nejmenší) vzdálenosti může být více letadel najednou. Program proto vypíše všechny dvojice letů, které jsou od sebe vzdálené právě tuto nejmenší vzdálenost.
+
+Program musí ošetřovat vstupní data. Pokud jsou vstupní data nesprávná, program to zjistí, zobrazí chybové hlášení a ukončí se. Za chybu je považováno:
+  - nečíselné souřadnice,
+  - chybějící/přebývající hranaté závorky nebo čárka,
+  - méně než dva lety na vstupu (jinak není definovaná nejmenší vzdálenost).
+  
+Váš program bude spouštěn v omezeném testovacím prostředí. Je omezen dobou běhu (limit je vidět v logu referenčního řešení) a dále je omezena i velikost dostupné paměti. V závislosti na zvoleném algoritmu může být úloha výpočetně náročnější. Správná implementace naivního algoritmu projde všemi testy kromě testu bonusového, tedy má šanci získat nominálních 100% bodů. Pro zvládnutí bonusového testu je potřeba použít efektivnější algoritmus, který dokáže v krátkém čase zvládnout větší objem testovacích dat (velké množství letů). Načtené lety si zřejmě budete muset ukládat do paměti. Je nutné použít dynamickou alokaci paměti, protože názvy letů a počty letů mohou být velmi různorodé. Testovací prostředí navíc pro malé vstupy citelně omezuje velikost dostupné paměti.

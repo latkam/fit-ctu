@@ -1,0 +1,17 @@
+V rovině jsou zadané 2 trojúhelníky, každý trojúhelník je jednoznačně zadán jedním ze tří způsobů:
+  - SSS: délkami svých stran,
+  - SUS: délkami dvojice stran a velikostí úhlu jimi sevřeného (úhel je zadán ve stupních, pořadí na vstupu je strana úhel strana),
+  - USU: velikostí dvojice úhlů a délkou přilehlé strany (úhly jsou zadané ve stupních, pořadí na vstupu je úhel strana úhel).
+  
+Program tato čísla přečte ze svého vstupu a rozhodne se pro jednu z následujících variant:
+  - zda zadané vstupy tvoří trojúhelník,
+  - zda jsou zadané trojúhelníky shodné,
+  - zda jsou zadané trojúhelníky podobné, ale nejsou shodné, nebo
+  - zda jsou zadané trojúhelníky zcela odlišné.
+  
+Pokud je vstup neplatný, program to musí detekovat a zobrazit chybové hlášení. Chybové hlášení zobrazujte na standardní výstup (ne na chybový výstup). Za chybu považujte:
+  - na vstupu není žádný ze tří povolených způsobů zadání trojúhelníku (SSS/SUS/USU),
+  - nečíselné zadání délek stran nebo velikosti úhlů,
+  - délka strany je záporná nebo nulová,
+  - úhel je menší nebo roven 0 stupňů, nebo větší nebo roven 180 stupňů,
+  - chybějící vstupní údaj/údaje (strana/úhel).

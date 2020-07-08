@@ -1,0 +1,20 @@
+Úkolem je realizovat funkci, která bude počítat ořezávání úsečky obdélníkem.
+
+V počítačové grafice je potřeba počítat ořezávání grafických útvarů při jejich vykreslování. Typickým příkladem je vykreslování do okna, kde chceme vidět pouze aktuálně zobrazovanou část obrazu. Nejjednodušší variantou je ořezávání úsečky. Úsečka je zadaná dvěma body, tyto body mohou ležet mimo aktuální výřez. Chceme zjistit, zda úsečka bude vykreslovaná a pokud ano, chceme vypočítat krajní body vykreslované části úsečky.
+
+Vaším úkolem je realizovat funkci, která ze zadaných parametrů výřezu (obdélníku) a krajních bodů úsečky vypočte, zda je alespoň část takové úsečky vidět a pokud ano, určí krajní body viditelné části úsečky. Požadovaná funkce má rozhraní:
+
+int clipLine ( double   rx1, double   ry1,
+               double   rx2, double   ry2,
+               double * ax,  double * ay,
+               double * bx,  double * by );
+rx1,ry1: je souřadnice jednoho rohu obdélníku výřezu, kterým má být úsečka ořezána,
+rx2,ry2: je souřadnice druhého (protilehlého) rohu obdélníku výřezu, kterým má být úsečka ořezána (obdélník má strany rovnoběžné s osami x a y),
+ax, ay: jsou vstupně výstupní parametry, které určují jeden koncový bod ořezávané úsečky. Volající hodnotu vyplní souřadnicí koncového bodu, Vaše funkce uloženou souřadnici upraví, pokud potřebuje úsečku ořezat,
+bx, by: jsou vstupně výstupní parametry, které popisují druhý koncový bod úsečky. Parametry se jinak chovají stejně jako parametry ax a ay,
+návratová hodnota: funkce vrátí hodnotu 1 pokud po ořezání alespoň část úsečky zasahuje do ořezávacího obdélníku, hodnotu 0 pokud je celá úsečka mimo ořezávaný obdélník.
+
+Odevzdávejte zdrojový soubor s implementací funkce clipLine. Odevzdávaný soubor musí obsahovat implementaci této funkce, s rozhraním (parametry), které odpovídají předpisu nahoře. Dále ve zdrojovém souboru musí být další Vaše funkce, které z funkce clipLine voláte. V odevzdávaném zdrojovém souboru by naopak neměly být zbytečnosti (pozůstatky vývoje a ladění), vkládání hlavičkových souborů ani funkce main - toto je již obsaženo v testovacím prostředí. Pro usnadnění vývoje a odevzdávání (abyste nemuseli před každým odevzdáním ručně odstraňovat funkci main a vkládání hlaviček) použijte šablonu v přiloženém souboru. Všimněte si, že funkce main a vkládání hlavičkových souborů je v bloku podmíněného překladu, tedy jsou testovacím prostředím přeskočeny. Dodaná funkce main navíc obsahuje hodnoty, které se kontrolují v základním testu.
+
+Vaše funkce je testovaná v omezeném prostředí. Omezena je doba běhu i dostupná paměť. Konkrétní omezení je zřejmé z výpisu testování referenčního řešení. V této jednoduché úloze by se ale ani paměťové ani časové omezení nemělo uplatnit.
+

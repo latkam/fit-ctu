@@ -1,0 +1,16 @@
+Úkolem je vytvořit program, který bude zobrazovat nápovědu při zadání vyhledávaného výrazu.
+
+Chceme realizovat program, který bude implementovat část funkcionality našeptávání - autocomplete. Program si pamatuje seznam často zadávaných frází. Pro každou frázi si pamatujeme její četnost. Chceme realizovat program, který načte seznam často zadávaných frází a následně bude schopen v tomto seznamu vyhledávat pravděpodobné fráze na základě zadání jejich částí.
+
+Vstupem programu je seznam často zadávaných frází. Tyto fráze jsou zadané v podobě:
+číslo:text fráze, kde číslo je četnost dotazu (desetinné číslo) a text fráze je řetězec. Často hledaných frází je dopředu neznámý počet, jejich zadávání končí zadáním prázdného řádku. Po zadání často vyhledávaných frází následuje vlastní vyhodnocování našeptávání. Na řádce vstupu je zadaný text dotazu, tento text tvoří frázi nebo její část. Texty dotazu jsou zadávané na jednotlivých řádkách, jejich zpracování skončí po dosažení konce vstupu (EOF).
+
+Výstupem programu je počet frází, které vyhoví zadanému textu dotazu. Text dotazu se může ve frázi vyskytovat kdekoliv (nemusí být na začátku, v tomto se zadání liší od jednodušší varianty), při porovnávání nerozlišujeme malá a velká písmena. Za výpisem počtu vyhovujících frází následuje jejich výpis v pořadí klesající četnosti. Zobrazeno bude nejvýše 50 frází s nejvyšší četností. Tento výstup bude zobrazen pro každý text dotazu na vstupu.
+
+Pokud je vstup neplatný, program to musí detekovat a zobrazit chybové hlášení. Chybové hlášení zobrazujte na standardní výstup (ne na chybový výstup). Za chybu považujte:
+  - u zadávané fráze není uvedena četnost nebo četnost není desetinné číslo,
+  - chybí dvojtečka oddělující četnost a frázi,
+  - byl zadán nulový počet frází.
+
+Váš program bude spouštěn v omezeném testovacím prostředí. Je omezen dobou běhu (limit je vidět v logu referenčního řešení). V povinných testech jsou zadávané rozumné dotazy (frází je málo). Pro zvládnutí povinných testů postačuje rozumná implementace naivního algoritmu. Úloha nabízí bonusový test, kde je objem zpracovávaných dat velký (fráze jsou dlouhé, je jich mnoho). Pro zvládnutí bonusového testu je potřeba použít lepší algoritmu, který dokáže rychle eliminovat neperspektivní fráze.
+  

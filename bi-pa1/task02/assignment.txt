@@ -1,0 +1,12 @@
+Úkolem je vytvořit program, který bude počítat čísla, která mají symetrický zápis v zadané číselné soustavě. Jedná se o rozšíření jednodušší úlohy, rozšíření spočívá v možnosti udat základ číselné soustavy. Doporučujeme nejprve řešit úlohu jednodušší a po jejím úspěšném odevzdání program rozšířit.
+
+Vstupem programu je posloupnost příkazů k hledání. Zadávání je ukončené dosažením konce vstupu (EOF). Každý příkaz se skládá ze čtveřice údajů X R LO HI. První znak udává, zda chceme nalezená symetrická čísla všechna vypsat (na vstupu bude znak l - list) nebo zda je chceme pouze spočítat (na vstupu bude znak c - count). Za znakem následuje základ číselné soustavy (v této soustavě chceme hledat symetrická čísla) a konečně dolní a horní mez prohledávaného intervalu - čísla LO a HI. Prohledává se uzavřený interval hodnot, tedy do prohledávání jsou zahrnuta i obě čísla LO a HI.
+
+Výstupem programu je odpověď na každý vstupní příkaz. Odpovědí na příkaz l je seznam nalezených čísel, formát je zřejmý z ukázky. Odpovědí na příkaz c je počet nalezených čísel.
+
+Pokud je vstup neplatný, program to musí detekovat a zobrazit chybové hlášení. Chybové hlášení zobrazujte na standardní výstup (ne na chybový výstup). Za chybu považujte:
+  - neznámý příkaz (ani l ani c),
+  - nečíselné zadání základu soustavy, základ soustavy mimo interval <2;36>,
+  - nečíselné zadání intervalu nebo chybějící meze LO a HI,
+  - dolní mez je záporná,
+  - dolní mez je větší než horní mez.

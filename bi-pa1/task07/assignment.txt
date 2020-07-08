@@ -1,0 +1,15 @@
+Úkolem je vytvořit program, který dokáže optimálně dělit deskový materiál. Jedná se o rozšíření úlohy základní. Program řeší stejný problém, pouze ve formě stromu detailně zobrazuje postup řezání desky. Doporučujeme úlohu řešit až po úspěšném zvládnutí jednodušší verze.
+
+Deskový materiál ve tvaru obdélníku je potřeba před dopravou rozřezat na přepravní velikost. Desky lze řezat pouze rovnoběžně se stranou, řez musí probíhat v celé délce. Tedy rozříznutím obdélníkové desky vzniknou dvě jiné (menší) obdélníkové desky. Například desku velikost 8x4 lze jedním řezem rozdělit na desky: 8x2+8x2, 8x1+8x3, 1x4+7x4, 2x4+6x4, 3x4+5x4 nebo 4x4+4x4. Pokud by deska 8x4 měla být rozdělena na 4 díly velikosti 4x2+4x2+4x2+4x2, musí se provést celkem 3 řezy (např. na 8x2+8x2 a následně obě menší desky ještě rozpůlit).
+
+Dopravovat lze pouze desky, jejichž obsah nepřekračuje zadaný limit (maxArea). Navíc, dopravovat lze pouze takové desky, které mají poměr stran nejvýše 2:1. Tedy při maximální velikosti 72 lze dopravovat rozměry 6x12, 12x6, 8x9, 9x8, 3x5, ..., ale ne 4x18, 18x4 nebo 1x10. Cílem je desku rozřezat na přepravní velikosti, zároveň chceme desku řezat co nejméně (co nejmenší počet řezů). Úkolem programu je určit, kolik nejméně řezů je potřeba provést. Zároveň program zobrazí seznam desek, které řezáním vzniknou.
+
+Vstupem program je velikost desky - dvě celá kladná čísla. Dále je zadaný maximální obsah přepravované desky, ten je rovněž zadaný jako celé kladné číslo.
+
+Výstupem program je nejmenší počet potřebných řezů. Dále program zobrazí postup řezání desky. Postup má podobu stromu, kde jednotlivé řádky zobrazují velikost desky během řezání. Pokud je deska dále zmenšována, jsou na dalších řádkách odsazeně zobrazené rozměry vzniklých částí. Aby se zjednodušila orientace ve výsledku, jsou do výpisu doplněné spojnice naznačující jak jednotlivé dílčí desky vznikly. Obecně existuje více způsobů, kterým lze původní velkou desku rozřezat tak, aby byl počet řezů co nejmenší a zároveň aby vzniklé desky vyhověly přepravním podmínkám. Program může zobrazit libovolné jedno takové řešení.
+
+Program musí ošetřovat vstupní data. Pokud jsou vstupní data nesprávná, program to zjistí, zobrazí chybové hlášení a ukončí se. Za chybu je považováno:
+  - nečíselné, nulové nebo záporné velikosti desky nebo
+  - nečíselné, nulové nebo záporné zadání maximální plochy.
+  
+Váš program bude spouštěn v omezeném testovacím prostředí. Je omezen dobou běhu (limit je vidět v logu referenčního řešení) a dále je omezena i velikost dostupné paměti. Úlohu je potřeba řešit zkoušením možných řešení, což může vést až k exponenciální časové složitosti. Časově kritické částí programu je potřeba implementovat rozumně efektivně. Úloha nabízí bonusový test, ve kterém jsou předávané velké rozměry vstupní desky. Základní algoritmus takové vstupy nedokáže včas vyřešit, je potřeba použít algoritmus efektivnější.
