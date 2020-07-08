@@ -5,7 +5,7 @@ This repository contains code I've written during my studies at Faculty of Infor
 
 ## Table of contents
 ### 1st semester
-* [BI-PA1](/bi-pa1): **Programming and Algorithmics 1** :warning: TBP
+* [BI-PA1](/bi-pa1): **Programming and Algorithmics 1**
 
 ### 2nd semester
 * [BI-PA2](/bi-pa2): **Programming and Algorithmics 2** :warning: TBP
