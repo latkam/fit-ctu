@@ -10,4 +10,4 @@
 - task08: **5.50/5.50** points
 
 ## Final result (tasks, exam etc.)
-Got more points than 99.5% of students.
+Got more points than 99.5 % of students.
