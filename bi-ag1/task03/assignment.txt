@@ -1,0 +1,22 @@
+Jako každý rok se s přelomem listopadu a prosince do našich myslí pomalu a opatrně vkrádá vánoční nálada. Ať už Vánoce máme rádi či ne, toto speciální období nelze ignorovat a pomalu nastává čas začít se na něj připravovat. Například je zapotřebí započít s přípravou žaludků na téměř smrtelné dávky bramborového salátu, pohledat a oprášit pletené ponožky od babičky, ale samozřejmě také začít shánět vánoční dárky. V Bavorsku je ale starostí okolo Vánoc vždy o trochu více. A může za to pivo. Bavorští milovníci piva totiž nedají dopustit na své vánoční a zimní pivní speciály, které jsou sladší a silnější než klasická piva. Tyto pivní speciály je zapotřebí rozdistribuovat po restauracích, které jsou umístěny v malebných meandrech bavorských řek, a jejichž umístění tedy kopíruje bavorskou říční síť.
+
+Říční síť je zadána pomocí význačných bodů a obousměrně propojených úseků mezi nimi. Mezi tyto význačné body patří i prameny, či soutoky několika řek. Říční síť tvoří strom, tedy mezi dvěma význačnými body vede právě jedna říční cesta. V každém význačném bodu říční sítě sídlí jedna restaurace. Každá restaurace má zadánu objednávku na určitý počet litrů piva, které je do ní nutno dodat. Pivních speciálů je spoustu druhů (vždy alespoň dva) a každý z nich má jinou cenu za litr. Distribuce do restaurací probíhá tak, že do každé restaurace bude dodán jeden konkrétní druh piva v takovém množství, aby byla zcela pokryta objednávka dané restaurace. Pro zajištění pestrosti nabídky napříč říčním tokem však nikdy nesmí dojít k tomu, že do dvou restaurací, které se nacházejí na opačných koncích jednoho úseku říční sítě, bude dodán stejný druh piva. Jinými slovy, do restaurací nacházejících se ve význačných bodech, které spolu v rámci říční sítě přímo sousedí, musí být vždy dodány různé druhy piva. Vaším úkolem je navrhnout plán distribuce pivních speciálů tak, aby byly splněny podmínky výše, a zároveň došlo k minimalizaci celkových nákladů za objednané pivo.
+
+Formát vstupu:
+
+Na prvním řádku jsou dvě čísla N a K. Číslo N udává počet význačných bodů říční sítě a číslo K udává počet druhů pivních speciálů. Můžete se spolehnout, že platí K ≥ 2.
+Význačné body i piva jsou číslovány od jedničky, mají tedy čísla 1, 2, ..., N, resp. 1, 2, ..., K.
+Na dalším řádku je K kladných celých čísel p1, p2, ..., pK. Číslo pi udává cenu za litr i-tého piva.
+Následuje řádek s N kladnými celými čísly o1, o2, ..., oN. Číslo oi udává počet litrů piva v objednávce i-té restaurace.
+Následuje N - 1 řádků, postupně pro všechny obousměrné úseky propojující význačné body v říční síti. Na i-tém z nich jsou dvě mezerami oddělená čísla xi a yi, 1 ≤ xi, yi ≤ N, xi ≠ yi. Tato čísla uvádějí, že i-tý úsek vede mezi význačnými body xi a yi.
+V říční síti je vždy alespoň jeden význačný bod.
+Můžete předpokládat, že vstup je korektní.
+Formát výstupu:
+
+Výstup sestává ze dvou řádků. Na prvním řádku vypište minimální možnou celkovou cenu za distribuci pivních speciálů za daných podmínek. Na druhém řádku vypište N mezerami oddělených čísel a1, a2, ..., aN, kde číslo ai označuje druh piva, které bude dodáno do restaurace i při cenově minimální distribuci.
+Existuje-li více řešení, vypište libovolné z nich.
+Bodové podmínky:
+
+Pro splnění povinných testů (test základními a malými daty) je zapotřebí, aby program fungoval korektně pro zadání o nejvýše 10 význačných bodech a 5 druzích piva, kde maximální cena jednoho litru piva i maximální počet litrů objednaného piva pro jednu restauraci bude nejvýše 10.
+Pro splnění testu středními daty musí program splnit časový a paměťový limit pro zadání o nejvýše 1 000 význačných bodech a 100 druzích piva, kde maximální cena jednoho litru piva i maximální počet litrů objednaného piva pro jednu restauraci bude nejvýše 1 000.
+Pro splnění testu velkými daty musí program splnit časový a paměťový limit pro zadání o nejvýše 100 000 význačných bodech a 1 000 druzích piva, kde maximální cena jednoho litru piva i maximální počet litrů objednaného piva pro jednu restauraci bude nejvýše 100 000.

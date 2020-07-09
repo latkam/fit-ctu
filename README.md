@@ -13,7 +13,7 @@ This repository contains code I've written during my studies at Faculty of Infor
 * [BI-DBS](/bi-dbs): **Database Systems**
 
 ### 3rd semester
-* [BI-AG1](/bi-ag1): **Algorithms and Graphs 1** :warning: TBP
+* [BI-AG1](/bi-ag1): **Algorithms and Graphs 1**
 * [BI-PYT](/bi-pyt): **Programming in Python** :warning: TBP
 * [BI-PYT - Semestral project](/bi-pyt-simple-photoshop) **Semestral project for Prgramming in Python - Simple photoshop** :warning: TBP
 * [BI-ZNS](/bi-zns): **Knowledge systems** :warning: TBP

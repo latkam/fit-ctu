@@ -1,0 +1,47 @@
+Známý obchodní holding má v poslední době problém s inventarizací svého zboží. Nezřídka se stává, že na prodejně chybí zboží, které je propagováno ve slevových letácích. To vede k všeobecné nespokojenosti zákazníků, ale také zaměstnanců, kteří jsou nuceni tuto stále se více opakující se situaci řešit a omlouvat se za ní. Z toho důvodu vás holding kontaktoval s otázkou, zda byste mu nebyli schopni pomoci.
+
+Obchodní holding je rozdělený do několika řetězců, identifikovaných přirozeným číslem. Podle toho, jak se holdingu daří, občas nějaký řetězec vznikne, občas zanikne. Každý řetězec má k dispozici seznam druhů zboží (ty jsou identifikované přirozenými čísly), které se v daném řetězci prodávají, spolu s celočíselným ohodnocením toho, jakou má daný druh zboží výnosnost (čím vyšší číslo, tím vyšší výnosnost). V řetězcích druhy zboží průběžně přibývají a ubývají. Odebrání nějakého druhu zboží z řetězce probíhá v pořadí od těch druhů zboží, které mají nejnižší výnosnost. Řetězce si vzájemně v prodejích nekonkurují, a mají tedy různé druhy zboží. Vzhledem ke zmíněným problémům s inventarizací však není zaručeno, že jsou všechny identifikátory druhů zboží unikátní (a to ani napříč různými řetězci, ani v rámci jednoho řetězce). Odebírání zboží se ale vždy týká jen jednoho konkrétního druhu zboží v jednom konkrétním řetězci, nikoliv všech druhů zboží sdílejících (nejspíše chybně) stejný identifikátor. Stejně tak dává smysl přidání zboží s, v nějakém řetězci již existujícím, identifikátorem, neboť může jít pouze o špatně označený druh zboží. Čas od času se management holdingu z důvodu špatných prodejů rozhodne sloučit dohromady dva řetězce do jednoho. Je-li pak situace hodně kritická, může přijít příkaz na sloučení dvou řetězců, které mají zboží s nejnižší výnosností. Také vznikají nové řetězce, ale jelikož je korporátní struktura holdingu značně zkostnatělá, poznáte to nejspíše až tehdy, když na daný řetězec přijde nějaký požadavek. Někdy se také stává, že do běhu řetězců zasáhne sám CEO holdingu, a vydá rozkaz odebrat ten druh zboží, které má nejnižší výnosnost napříč všemi řetězci.
+
+Vašim úkolem je napsat pro holding informační systém. Jeho základní rozhraní je dané následující třídou:
+
+class CHolding
+{
+  public:
+   // default constructor
+   // destructor  
+   void Add    (int chain, unsigned int id, unsigned int revenue);
+   bool Remove (int chain, unsigned int & id);
+   bool Remove (unsigned int & id);
+   void Merge  (int dstChain, int srcChain);
+   bool Merge  (void);
+  private:
+   // todo
+};
+Add (chain, id, revenue)
+tento příkaz říká přidej řetězci chain do seznamu druh zboží id s výnosností revenue,
+Remove (chain, id)
+znamená nalezni v řetězci chain nejméně výnosný druh zboží, zjisti a do výstupního parametru id ulož jeho ID a smaž jej ze seznamu zboží daného řetězce. V takovém případě (úspěch) metoda vrací true. Pokud je seznam druhů zboží zadaného řetězce prázdný, metoda má návratovou hodnotu false.
+Remove (id)
+znamená nalezni druh zboží s nejnižší výnosností napříč všemi řetězci, zjisti a do výstupního parametru id ulož jeho ID a smaž jej ze seznamu zboží daného řetězce. V takovém případě (úspěch) metoda vrací true. Pokud jsou seznamy druhů zboží všech řetězců zcela prázdné, metoda má návratovou hodnotu false.
+Merge (dstChain, srcChain)
+znamená sluč řetězce dstChain a srcChain do výsledného dstChain. Může se stát, že dstChain == srcChain.
+Merge ()
+znamená sluč dohromady dva řetězce R_1 a R_2, které obsahují nejméně výnosný druh zboží napříč všemi řetězci, do výsledného řetězce s číslem min(R_1, R_2), tj. číslem, které je rovno menšímu z čísel daných dvou řetězců. Formálně je R_1 řetězec obsahující nejméně výnosný druh zboží napříč všemi řetězci a R_2 je řetězec obsahující nejméně výnosný druh zboží napříč všemi řetězci kromě řetězce R_1. V případě úspěchu metoda vrací true. Pokud řetězec R_1 či R_2 neexistují, metoda má návratovou hodnotu false.
+Dále:
+Může se stát, že nezodpovědný pracovník bude požadovat odebrání druhu zboží z řetězce, který má prázdný seznam zboží. K tomu slouží návratová hodnota false dané metody.
+Bohužel se nedozvíte, že byl založen nový řetězec, zjistíte to poprvé až na něj přijde požadavek. Seznam druhů zboží v nově vzniklém řetězci je samozřejmě prázdný.
+Číslo řetězce je 1 ≤ chain ≤ 10000.
+Číslo druhu zboží je 0 ≤ id < 232, není nicméně zaručeno, že jsou všechny identifikátory unikátní.
+Výnosnost je 0 < revenue < 232 - 1.
+Identifikátory se mohou recyklovat, tedy jednou odebraný identifikátor se může objevit znovu
+Pokud se stane, že příkazu Remove(id) vyhovuje více druhů zboží, má přednost druh zboží v seznamu řetězce s nižším id.
+Stejně tak vyhovují-li příkazu Merge() více než dva řetězce, mají přednost řetězce s nižším id.
+Pokud v seznamu jednoho řetězce příkazu Remove vyhovuje více druhů zboží, má přednost druh zboží s nižším id.
+Knihovna STL nevyhovuje hygienickým předpisům pro provozování řetězců a nelze jí tedy používat.
+Můžete se spolehnout, že vstupní parametry metod budou zadávány korektně.
+Bodové podmínky:
+
+Pro splnění povinných testů je zapotřebí, aby program fungoval korektně pro vstupy obsahující řádově tisíce příkazů. Příkazy nebudou typu Merge.
+Pro splnění testu velkými daty #1 musí program splnit časový limit pro vstupy obsahující řádově miliony příkazů. Příkazy nebudou typu Merge.
+Pro splnění testu velkými daty #2 musí program splnit časový limit pro vstupy obsahující řádově miliony příkazů. Příkazy mohou být všech typů.
+Testy podle ukázky jsou z důvodu omezení typů příkazů na vstupu provedeny ve dvou různých testech. První z nich testuje ukázkové vstupy 1 až 3 a je povinný. Druhý testuje ukázkové vstupy 4 až 7 a je nepovinný.
