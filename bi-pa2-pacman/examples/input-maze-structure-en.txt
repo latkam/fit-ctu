@@ -1,0 +1,41 @@
+This file defines input maze structure.
+
+Definition of tile values:
+    WALL_CORNER      = '+',
+    WALL_HORIZONTAL  = '-',
+    WALL_VERTICAL    = '|',
+    DOOR             = '=',
+    PACMAN           = 'C',
+    BLINKY_FRGHTENED = 'B',
+    PINKY_FRGHTENED  = 'P',
+    INKY_FRGHTENED   = 'I',
+    CLYDE_FRGHTENED  = 'L',
+    BLINKY           = 'b',
+    PINKY            = 'p',
+    INKY             = 'i',
+    CLYDE            = 'c',
+    FRESH            = ' ',
+    DOT              = '.',
+    BONUS            = 'o',
+    CHERRY           = '%',
+    TELEPORT         = 'T'
+    
+In the input maze, following characters may occur:
+'+', '-', '|', '.', ' ', 'o', 'C', 'T', '=', 'b', 'p', 'i', 'c', '%', '\n' (UNIX newline).        
+Corners of the maze must consist of '+'.    
+Horizontal walls must consist of '|'.
+Vertical walls must consist of '-'.
+No other character can occur on maze borders.
+Number of teleports must be the same as defined in NConfig.hpp. The default value is 2.
+There must be one tile with PACMAN.
+There must be one tile with BLINKY. This ghost must be defined first among all ghosts.
+There must be one tile with each of the following: PINKY, INKY, CLYDE in any order.
+Tiles with PINKY, INKY and CLYDE are considered as their homes. Thus, one tile above
+each of theese three ghosts, there must be DOOR. Over the door, there must be PACMAN,
+FRESH, DOT, BONUS or CHERRY.
+CHERRY must be set once in the maze.
+Under the maze there must be game difficulty defined as follows: game difficulty {easy/medium/hard}.
+Under the game difficulty definition, there must be ghost difficulty defined as follows: ghost difficuly {easy/medium/hard}.
+Difficulty definitions are not case sensitive.
+
+If any of the rules is violated, the input fails.   

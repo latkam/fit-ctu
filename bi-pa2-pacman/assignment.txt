@@ -1,0 +1,70 @@
+Pacman
+
+Implementujte klasickou hru Pacman proti počítači (můžete naimplementovat i jiné varianty).
+
+Hra musí splňovat následující funkcionality:
+
+Dodržování základních pravidel, sbírání bonusů, míncí (teček), třešniček, teleporty, atp.
+Je implementováno několik druhů AI duchů (fungující i zároveň - např. duchové se liší barvou, znakem).
+Lze načítat mapy ze souboru (bludiště + pozice bonusů a duchů).
+Konfigurovatelná obtížnost hry ze souboru (rychlost duchů, délka trvání jednotlivých módů hry, pravděpodobnost přidání nového bonusu do mapy, ...)
+Škálovatelná obtížnost duchů (více strategií duchů dle obtížnost, dle různého chování)
+Kde lze využít polymorfismus? (doporučené)
+
+Rozdělení hráčů: hráč, duch (různé druhy umělé inteligence)
+Mód hry: klasický (duchové chodí dle svých strategií), zběsilý (duchové pronásledují hráče), nezranitelný (duchové jsou pomalejší, dají se zabít)
+Herní políčko: zem, stěna, bod, bonus (změna módu), třešnička (více bodů), teleport
+Uživatelské rozhraní: konzole, ncurses, SDL, OpenGL (různé varianty), ...
+Další informace
+
+https://cs.wikipedia.org/wiki/Pac-Man
+http://programujte.com/clanek/2011010500-chovani-duchu-ve-hre-pac-man-cast-1/
+http://programujte.com/clanek/2011010500-chovani-duchu-ve-hre-pac-man-cast-2/
+
+
+Detailní zadání:
+
+Implementace hry PacMan, kdy hráč ovládá PacMana, počítač ovládá duchy.
+Jsou dodržena všechna základní pravidla. PacMan sbírá mince, bonusy a třešničky, může se
+přesouvat pomocí teleportů.
+
+Jsou implementovány tři herní módy:
+  Scatter:    duchové se "rozprchnou" do svých rohů. Protože se rohy nacházejí na jim
+              nepřístupných políčcích a duchové se (až na výjimky) nesmějí otáčet,
+              nakonec skončí tím, že chodí dokolečka okolo překážky blízko svého
+              cílového rohu.
+  Chase:      duchové "honí" PacMana.
+  Frightened: duchové se pohybují pomaleji, dají se zabít, na křižovatkách se náhodně
+              rozhodují, kam se vydají dál.
+  
+Jsou implementovány různé druhy AI duchů:
+  Blinky (červený duch): v módu Scatter i v módu Chase "honí" PacMana - využívá hladové
+                         prohledávání, kdy cílovou pozicí je aktuální PacManova pozice.
+  Pinky (růžový duch):   v módu Scatter jde hladově do levého horního rohu, v módu Chase
+                         jde hladově na pozici, která je 4 dlaždice před PacManem.
+  Inky (modrý duch):     v módu Scatter jde hladově do pravého horního rohu, v módu Chase
+                         jde hladově na pozici vzdálené dvojnásobek vzdálenosti políčka
+                         nacházejícího se dvě políčka před PacManem od aktuální pozice
+                         Inkyho.
+  Clyde (oranžový duch): v módu Scatter jde hladově do levého dolního rohu, v módu Chase
+                         se řídí aktuální vzdáleností od PacMana. Pokud je od něj dál než
+                         5 políček, chová se jako Blinky, jinak se chová, jako by byl
+                         v módu Scatter.
+                         
+Mapy se načítají ze souboru, jde načíst více map a pro jednotlivé hry si pak vybírat.
+Nejdříve si hráč vybere vlastní pojmenování načítané mapy, pak specifikuje jméno souboru.
+
+V souboru je možno definovat dva druhy obtížnosti - obtížnost hry jako takové a obtížnost
+duchů. Oba atributy mohou nabývat hodnot easy, medium, hard. Obtížnost hry ovlivňuje délku
+jednotlivých módu hry, obtížnost duchů ovlivňuje rychlost jejich pohybu v různých módech.
+
+Polymorfismus je využit dvakrát:
+ 1) Běh podprogramů: z hlavního menu se spouští program pro hraní hry, načítání mapy
+    a zobrazení dosažených skóre.
+ 2) Postavičky: metody pro pohyb a nastavení.
+ 
+Hráč si může zobrazit všechna skóre, kterých dosáhl. Program zobrazí tabulku, kdy každý
+řádek obsahuje jméno mapy, dosažený počet bodů a informaci, zda hráč vyhrál, či nikoliv.
+Tyto informace jsou seřazené sestupně podle počtu bodů, resp. podle příznaku výhry, kdy
+výhra znamená více než prohra.
+Pokud by se všechny řádky do tabulky nevešly, dá se v ní scrollovat. 

@@ -1,0 +1,41 @@
+Tento soubor definuje strukturu vstupního bludiště.
+
+Definice hodnot políček:
+    ZEĎ_ROH          = '+',
+    ZEĎ_HORIZONTÁLNÍ = '-',
+    ZEĎ_VERTIKÁLNÍ   = '|',
+    DVEŘE            = '=',
+    PACMAN           = 'C',
+    BLINKY_VYDĚŠENÝ  = 'B',
+    PINKY_VYDĚŠENÝ   = 'P',
+    INKY_VYDĚŠENÝ    = 'I',
+    CLYDE_VYDĚŠENÝ	 = 'L',
+    BLINKY           = 'b',
+    PINKY            = 'p',
+    INKY             = 'i',
+    CLYDE            = 'c',
+    PRÁZDNO          = ' ',
+    TEČKA            = '.',
+    BONUS            = 'o',
+    TŘEŠNIČKA        = '%',
+    TELEPORT         = 'T'
+    
+Ve vstupním bludišti se mohou objevit následující znaky:
+'+', '-', '|', '.', ' ', 'o', 'C', 'T', '=', 'b', 'p', 'i', 'c', '%', '\n' (UNIX odřádkování).        
+Rohy bludiště musí být označeny znakem '+'.    
+Horizontální zdi musí být označeny znakem '|'.
+Vertikální zdi musí být označeny znakem '-'.
+Žádný jiný znak se na okrajích bludiště nesmí objevit.
+Počet teleportů musí odpovídat hodnotě definované v NConfig.hpp. Defaultní hodnota je 2.
+V bludišti musí být právě jedno políčko s PACMAN.
+V bludišti musí být právě jedno políčko s BLINKY. Tento duch musí být definován jako první z duchů.
+V bludišti musí být právě jedno políčko s následujícími: PINKY, INKY, CLYDE v jakémkoliv pořadí.
+Políčka s PINKY, INKY and CLYDE jsou považovány za jejich domeček. Tedy jendo políčko nad
+každým z těchto tří duchů, musí být  DVEŘE. Nade dveřmi musí být PACMAN,
+PRÁZDNO, TEČKA, BONUS nebo TŘEŠNIŠKA.
+TŘEŠNIČKA se musí v bludišti vyskytovat právě jednou.
+Pod bludištěm musí být definovaná obtížnost hry ve tvaru: game difficulty {easy/medium/hard}.
+Pod definicí obtížnosti hry musí být definována obtížnost duchů ve tvaru: ghost difficuly {easy/medium/hard}.
+Definice obtížností mohou být psány libovolně velkými nebo malými písmeny.
+
+Pokud je kterékoliv z těchto pravidel porušeno, načtení bludiště selže.   
