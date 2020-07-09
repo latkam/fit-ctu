@@ -8,7 +8,7 @@ This repository contains code I've written during my studies at Faculty of Infor
 * [BI-PA1](/bi-pa1): **Programming and Algorithmics 1**
 
 ### 2nd semester
-* [BI-PA2](/bi-pa2): **Programming and Algorithmics 2** :warning: TBP
+* [BI-PA2](/bi-pa2): **Programming and Algorithmics 2**
 * [BI-PA2 - Semestral project](/bi-pa2-pacman): **Semestral project for Programming and Algorithmics 2 - Pacman** :warning: TBP
 * [BI-DBS](/bi-dbs): **Database Systems** :warning: TBP
 
