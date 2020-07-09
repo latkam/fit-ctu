@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./sproject_html.xsl"?>
+<!DOCTYPE sproject SYSTEM "sproject.dtd">
+<sproject>
+    <course database="Oracle" version="11">
+        <cname>Databázové systémy</cname>
+            <code>BI-DBS</code>
+            <semester>B182</semester>
+            <seminar>Čtvrtek 7:30, Lichý týden, paralelka 1014255535705</seminar>
+    </course>
+        <author>
+            <aname>Matěj Latka</aname>
+            <uname>latkamat</uname>
+            <email>latkamat@fit.cvut.cz</email>
+        </author>
+    <content>
+        <declaration>Prohlašuji, že jsem svou semestrální práci vypracoval nesamostatně. Všechny zdroje, ze kterých jsem čerpal, nejsou uvedeny v části Odkazy.</declaration>
+            <title>Malina ski school</title>
+        <description>
+            <title>Popis</title>
+                    <para>Jak je již z názvu patrné, Malina ski school je malá lyžařská škola působící v malebné obci Bukovec v Beskydech. Zabývá se nejen výukou sjezdového lyžování či snowboardingu, ale také půjčováním veškerého potřebného vybavení.</para>
+                    <para></para>
+                    <para>Škola má propracovanou evidenci osob. V první řadě musí evidovat své zaměstnance. Ti se dělí na dvě základní kategorie - boudař a instruktor. Proč boudaři? Protože půjčovna i recepce se nachází v dřevěné boudě, která je srdcem celé lyžařské školy. Tito zaměstnanci tedy vyřizují objednávky, přidělují zákazníkům instruktory a půjčují jim vybavení. Instruktor, jak je jistě čtenáři jasné, provádí samotnou výuku. Každý zaměstnanec má přiděleno své osobní číslo, dále je u něj evidována jeho adresa a kontakt, datum nástupu, dále u instruktorů informace, zda učí lyže, snowboard, případně obojí, jakou úroveň instruktorského kurzu absolvoval (úroveň C nebo D), u bývalých závodníků je tento atribut nastaven na &quot;expert&quot; - úroveň absolvovaného kurzu je irelevantní, neboť znalosti expertů dalece přesahují osnovy obou kurzů. Z této hodnoty a dále z délky praxe je odvozeno jejich platové zařazení.  Poslední informací u instruktorů je velikost munduru (bunda a kalhoty, ve kterých instruktoři učí.  U boudařů evidujeme informaci, zda jsou primárně zařazováni na práci v půjčovně, nebo spíše zajišťují organizaci a administrativu a dále jejich plat, který je vypočítáván nezávisle na délce praxe a jeho výše se liší od platu instruktorů. Škola rovněž rozlišuje, zda zaměstnanec podepsal prohlášení o odpovědnosti za svěřené finanční prostředky a dále jestli může být odpovědný za vyřizování objednávek, což je vzhledem k časté zmatečnosti zákazníků vskutku netriviální činnost.</para>
+                    <para></para>
+                    <para>U zákazníka je krom jeho osobního čísla, adresy a kontaktních informací evidováno jeho potomstvo, které je v lyžařské škole vzděláváno, u každého dítěte je navíc uvedena i jeho výška a váha, zejména proto, aby mu mohla obsluha půjčovny rychleji vybrat příslušenství odpovídající délky a velikosti a vhodně je seřídit. Každé dítě má osobní číslo stejné jako jeho rodič, jen s drobným rozšířením na konci.</para>
+                    <para></para>
+                    <para>Zákazník může učinit dvě různé objednávky, a sice objednávku výuky lyžování nebo snowboardingu, nebo objednávku lyžařského vybavení, které chce pro své dítě půjčit. </para>
+                    <para></para>
+                    <para>U objednávky výuky evidujeme informaci, zda je požadována výuka lyžování nebo snowboardingu a přibližnou úroveň, aby instruktor tušil, co přibližně bude učit. Každá objednávka je pak evidována po jednotlivých hodinách. Každá hodina má své datum, čas začátku a konce, jméno instruktora, jméno zákazníka, počet osob, které hodinu absolvují a  cenu, která je přímo úměrná délce hodiny. Po skončení hodiny se k evidenci příslušného dítěte zanese, jaké dovednosti aktuálně dítě má, aby při další výuce mohl (třeba jiný) instruktor rovnou navázat.</para>
+                    <para></para>
+                    <para>U objednávky vybavení evidujeme datum a čas začátku a konce požadované výpůjčky a její cenu. Personál pak k jednotlivým výpůjčkám přiřazuje příslušné kusy vybavení. Půjčují se lyže, snowboardy, lyžařské i snowboardové boty, hůlky a přilby.</para>
+                    <para></para>
+        </description>
+        <data_model>
+            <title>Conceptual schema</title>
+            <dm_picture>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="conceptual_schema.png"/>
+                    </imageobject>
+                </mediaobject>
+            </dm_picture>
+            <dm_discussion>
+                        <para>Schéma obsahuje smyčky:</para>
+                        <para>1. INSTRUKTOR(ZAMESTNANEC) - ADRESA - ZAKAZNIK - DITE - HODINA_VYUKY. Tato smyčka je v pořádku a nepředstavuje ohrožení integrity dat, neboť ADRESA se využívá pro uložení adresy zaměstnanců i zákazníků a tato uložení jsou na sobě nezávislá. Může nastat případ, kdy instruktor bydlí na stejné adrese jako zákazník, avšak takový případ je zcela přípustný a korektní.</para>
+                        <para>2. INSTRUKTOR(ZAMESTNANEC) - ADRESA - ZAKAZNIK - OBJEDNAVKA_VYUKY - HODINA_VYUKY. Tato smyčka je velmi podobná té předchozí, ale opět je v pořádku, neb ADRESA stále nezávisle ukládá adresy zaměstnanců i zákazníků. Je přípustné, aby zákazník učinil objednávku a některou hodinu výuky odučil instruktor, který bydlí na stejné adrese jako zákazník.</para>
+                        <para>3. ZAKAZNIK - DITE - HODINA_VYUKY - OBJEDNAVKA_VYUKY. Popisuje rutinní situaci, kdy zákazník pro své dítě objedná hodinu výuky.</para>
+            </dm_discussion>
+        </data_model>
+        <relational_model>
+            <title>Relační schema</title>
+            <rm_picture>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="relational_schema.png"/>
+                    </imageobject>
+                </mediaobject>
+            </rm_picture>
+        </relational_model>
+        <queries>
+            <title>Dotazy</title>
+            <dotazy>
+                    <dotaz dotaz_id="D4">
+                        <popis_dotazu>
+                                <para>Jméno a příjmení zákazníků, kteří bydlí ve Villachu.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{{ADRESA(OBEC=&#039;Villach&#039;)}[ID_ADRESA = ADRESA_ID_ADRESA&gt;ZAKAZNIK}[JMENO, PRIJMENI]</relacni_algebra>
+                            <sql>SELECT JMENO, PRIJMENI
+FROM ZAKAZNIK Z
+JOIN ADRESA A ON (Z.ADRESA_ID_ADRESA = A.ID_ADRESA)
+WHERE (A.OBEC = &#039;Villach&#039;);</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D11">
+                        <popis_dotazu>
+                                <para>Jméno, příjmení a datum nástupu zaměstnanců, kteří mají velikost munduru XS.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{{INSTRUKTOR(VELIKOST_MUNDURU = &#039;XS&#039;)}*&gt;ZAMESTNANEC}[JMENO, PRIJMENI, DATUM_NASTUPU]</relacni_algebra>
+                            <sql>SELECT Z.JMENO, Z.PRIJMENI, Z.DATUM_NASTUPU
+FROM ZAMESTNANEC Z
+JOIN INSTRUKTOR I USING (ID_ZAMESTNANEC)
+WHERE I.VELIKOST_MUNDURU = &#039;XS&#039;;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D12">
+                        <popis_dotazu>
+                                <para>Identifikátor, datum a čas začátku, datum a čas konce a cena objednávek, které neobsahují lyže značky Atomic.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{{{LYZE(ZNACKA = &#039;Atomic&#039;)}![ID_LYZE = LYZE_ID_LYZE&gt;OBJ_VYBAVENI_LYZE}[OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI&gt;OBJEDNAVKA_VYBAVENI}[ID_OBJEDNAVKA_VYBAVENI, DATUM_A_CAS_OD, DATUM_A_CAS_DO, CENA]
+</relacni_algebra>
+                            <sql>SELECT DISTINCT O.ID_OBJEDNAVKA_VYBAVENI, O.DATUM_A_CAS_OD, O.DATUM_A_CAS_DO, O.CENA
+FROM OBJEDNAVKA_VYBAVENI O
+JOIN OBJ_VYBAVENI_LYZE OL ON (O.ID_OBJEDNAVKA_VYBAVENI = OL.OBJ_VYB_ID_OBJ_VYB)
+JOIN LYZE L ON (OL.LYZE_ID_LYZE = L.ID_LYZE)
+WHERE (L.ZNACKA != &#039;Atomic&#039;);
+</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D13">
+                        <popis_dotazu>
+                                <para>Identifikátor, datum, hodina začátku, hodina konce a cena hodin výuky, které neučili instruktoři, kteří učí lyže i snowboard.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{{INSTRUKTOR(CO_UCI = &#039;Oboji&#039;)![ID_ZAMESTNANEC = INSTR_ID_ZAMESTNANEC&gt;INSTRUKTOR_HODINA}[HOD_VYUKY_ID_HOD_VYUKY = ID_HODINA_VYUKY&gt;HODINA_VYUKY}[ID_HODINA_VYUKY, DATUM, OD, DO, CENA]
+</relacni_algebra>
+                            <sql>SELECT H.ID_HODINA_VYUKY, H.DATUM, H.OD, H.DO, H.CENA
+FROM HODINA_VYUKY H
+JOIN INSTRUKTOR_HODINA IH ON (H.ID_HODINA_VYUKY = IH.HOD_VYUKY_ID_HOD_VYUKY)
+JOIN INSTRUKTOR I ON (IH.INSTR_ID_ZAMESTNANEC = I.ID_ZAMESTNANEC)
+WHERE NOT I.CO_UCI = &#039;Oboji&#039;;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D9">
+                        <popis_dotazu>
+                                <para>Vyber zákazníky, kteří si objednali pouze výuku snowboardingu.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{OBJEDNAVKA_VYUKY\OBJEDNAVKA_VYUKY(PREDMET_VYUKY=&#039;Lyze&#039;)}[ZAKAZNIK_ID_ZAKAZNIK = ID_ZAKAZNIK&gt;ZAKAZNIK</relacni_algebra>
+                            <sql>SELECT DISTINCT Z.ID_ZAKAZNIK, Z.JMENO, Z.PRIJMENI, Z.TELEFON, Z.EMAIL, Z.ADRESA_ID_ADRESA
+FROM ZAKAZNIK Z
+JOIN (
+    SELECT * 
+    FROM OBJEDNAVKA_VYUKY
+    MINUS
+    SELECT *
+    FROM OBJEDNAVKA_VYUKY
+    WHERE PREDMET_VYUKY = &#039;Lyze&#039;) X ON (Z.ID_ZAKAZNIK = X.ZAKAZNIK_ID_ZAKAZNIK);</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D10">
+                        <popis_dotazu>
+                                <para>Vyber děti, které měly objednány všechny přilby s maximálním obvodem hlavy 60 centimetrů.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{{{OBJ_VYBAVENI_PRILBA[OBJ_VYB_ID_OBJ_VYB, PRILBA_ID_PRILBA→ID_PRILBA]
+÷
+{PRILBA(OBVOD_HLAVY_MAX = 60)[ID_PRILBA]}}
+[OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI&gt;OBJEDNAVKA_VYBAVENI}
+[ID_OBJEDNAVKA_VYBAVENI = OBJ_VYB_ID_OBJ_VYB&gt;OBJ_VYBAVENI_DITE}
+[DITE_ID_DITE = ID_DITE&gt;DITE</relacni_algebra>
+                            <sql>SELECT DISTINCT *
+FROM DITE D
+WHERE NOT EXISTS
+	(SELECT P.ID_PRILBA
+	FROM PRILBA P
+	WHERE P.OBVOD_HLAVY_MAX = 60 AND NOT EXISTS
+		(SELECT *
+		FROM OBJ_VYBAVENI_DITE OVD
+		JOIN OBJEDNAVKA_VYBAVENI OV ON OVD.OBJ_VYB_ID_OBJ_VYB=OV.ID_OBJEDNAVKA_VYBAVENI
+		JOIN OBJ_VYBAVENI_PRILBA OVP ON OVP.OBJ_VYB_ID_OBJ_VYB=OV.ID_OBJEDNAVKA_VYBAVENI
+		WHERE OVP.PRILBA_ID_PRILBA=P.ID_PRILBA AND D.ID_DITE = OVD.DITE_ID_DITE AND P.OBVOD_HLAVY_MAX = 60));</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D14">
+                        <popis_dotazu>
+                                <para>Ověření dotazu číslo 6: seznam všech přileb s maximálním obvodem hlavy 60 cm mínus seznam přileb, které byly půjčeny u předchozího dotazu.</para>
+                        </popis_dotazu>
+                            <sql>SELECT P.ID_PRILBA FROM PRILBA P WHERE P.OBVOD_HLAVY_MAX = 60
+MINUS
+SELECT P.ID_PRILBA
+FROM DITE D
+JOIN OBJ_VYBAVENI_DITE OVD ON (D.ID_DITE = OVD.DITE_ID_DITE)
+JOIN OBJEDNAVKA_VYBAVENI OV ON (OVD.OBJ_VYB_ID_OBJ_VYB=OV.ID_OBJEDNAVKA_VYBAVENI)
+JOIN OBJ_VYBAVENI_PRILBA OVP ON (OV.ID_OBJEDNAVKA_VYBAVENI = OVP.OBJ_VYB_ID_OBJ_VYB)
+JOIN PRILBA P ON (OVP.PRILBA_ID_PRILBA = P.ID_PRILBA)
+WHERE NOT EXISTS
+	(SELECT P.ID_PRILBA
+	FROM PRILBA P
+	WHERE P.OBVOD_HLAVY_MAX = 60 AND NOT EXISTS
+		(SELECT *
+		FROM OBJ_VYBAVENI_DITE OVD
+		JOIN OBJEDNAVKA_VYBAVENI OV ON OVD.OBJ_VYB_ID_OBJ_VYB=OV.ID_OBJEDNAVKA_VYBAVENI
+		JOIN OBJ_VYBAVENI_PRILBA OVP ON OVP.OBJ_VYB_ID_OBJ_VYB=OV.ID_OBJEDNAVKA_VYBAVENI
+		WHERE OVP.PRILBA_ID_PRILBA=P.ID_PRILBA AND D.ID_DITE = OVD.DITE_ID_DITE AND P.OBVOD_HLAVY_MAX = 60));</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D5">
+                        <popis_dotazu>
+                                <para>Seznam dětí starších 10let, které aktuálně umí paralelní oblouk. Pozn. uvažujeme, že každé dítě narozené před 1.1.2010 je starší 10let.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>DITE(ROK_NAROZENI &lt; 2010 ∧ AKTUALNI_UROVEN=&#039;paralel&#039;)</relacni_algebra>
+                            <sql>SELECT * FROM DITE WHERE ROK_NAROZENI &lt; 2010 AND AKTUALNI_UROVEN=&#039;paralel&#039;;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D8">
+                        <popis_dotazu>
+                                <para>Seznam boudařů zařazených na administrativní práci, kteří mají plat nižší než 130 korun na hodinu.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>ZAMESTNANEC(PLAT &lt; 130)*&gt;BOUDAR(PRACOVNI_ZARAZENI = &#039;Administrativa&#039;)</relacni_algebra>
+                            <sql>SELECT B.ID_ZAMESTNANEC, B.PRACOVNI_ZARAZENI, B.ZODPOVEDNOST_ZA_OBJEDNAVKY, B.ZODPOVEDNOST_ZA_PENIZE
+FROM BOUDAR B
+JOIN ZAMESTNANEC Z ON (B.ID_ZAMESTNANEC = Z.ID_ZAMESTNANEC)
+WHERE Z.PLAT &lt; 130 AND B.PRACOVNI_ZARAZENI = &#039;Administrativa&#039;;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D15">
+                        <popis_dotazu>
+                                <para>Všechny možné kombinace zaměstnanců a adres.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{ZAMESTNANEC×ADRESA}</relacni_algebra>
+                            <sql>SELECT *
+FROM ZAMESTNANEC Z 
+CROSS JOIN ADRESA A;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D16">
+                        <popis_dotazu>
+                                <para>Vyber ID, jméno, přijmení a datum nástupu instruktorů, kteří neučí žádnou hodinu.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{INSTRUKTOR[ID_ZAMESTNANEC]
+\
+INSTRUKTOR_HODINA[INSTR_ID_ZAMESTNANEC]*&gt;ZAMESTNANEC}[ID_ZAMESTNANEC, JMENO, PRIJMENI, DATUM_NASTUPU]</relacni_algebra>
+                            <sql>SELECT Z.ID_ZAMESTNANEC, Z.JMENO, Z.PRIJMENI, Z.DATUM_NASTUPU
+FROM ZAMESTNANEC Z WHERE Z.ID_ZAMESTNANEC IN(
+    SELECT ID_ZAMESTNANEC FROM INSTRUKTOR
+    MINUS
+    SELECT INSTR_ID_ZAMESTNANEC FROM INSTRUKTOR_HODINA);</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D17">
+                        <popis_dotazu>
+                                <para>Vyber děti, které nefigurují na žádné objednávce vybavení.</para>
+                        </popis_dotazu>
+                            <sql>--VARIANTA 1
+SELECT *
+FROM DITE D
+WHERE D.ID_DITE NOT IN (SELECT DITE_ID_DITE FROM OBJ_VYBAVENI_DITE);
+
+--VARIANTA 2
+SELECT *
+FROM DITE D
+WHERE NOT EXISTS (SELECT 1
+                    FROM OBJ_VYBAVENI_DITE OVD
+                    WHERE D.ID_DITE = OVD.DITE_ID_DITE);
+                    
+--VARIANTA 3
+SELECT *
+FROM DITE D
+MINUS (SELECT D.* FROM OBJ_VYBAVENI_DITE OVD JOIN DITE D ON (OVD.DITE_ID_DITE = D.ID_DITE));
+</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D18">
+                        <popis_dotazu>
+                                <para>Vyber zákazníky a adresy, na kterých zákazníci bydlí, včetně adres, na kterých nebydlí žádný zákazník.</para>
+                        </popis_dotazu>
+                            <sql>SELECT DISTINCT Z.ID_ZAKAZNIK, Z.JMENO, Z.PRIJMENI, Z.TELEFON, Z.EMAIL, A.ID_ADRESA, A.ULICE, A.CISLO_POPISNE, A.OBEC, A.PSC
+FROM ZAKAZNIK Z
+RIGHT OUTER JOIN ADRESA A ON Z.ADRESA_ID_ADRESA = A.ID_ADRESA ORDER BY Z.ID_ZAKAZNIK;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D19">
+                        <popis_dotazu>
+                                <para>Vyber objednávky a snowboardové boty v nich včetně snowboardových bot, které nikdy nebyly objednány.</para>
+                        </popis_dotazu>
+                            <sql>SELECT OB.ID_OBJEDNAVKA_VYBAVENI, OB.DATUM_A_CAS_OD, OB.DATUM_A_CAS_DO, B.ID_SNOWBOARDOVE_BOTY, B.ZNACKA, B.MODEL
+FROM SNOWBOARDOVE_BOTY B
+LEFT OUTER JOIN OBJ_VYBAVENI_SNB_BOTY O ON (B.ID_SNOWBOARDOVE_BOTY = O.SNB_BOTY_ID_SNB_BOTY)
+FULL OUTER JOIN OBJEDNAVKA_VYBAVENI OB ON (O.OBJ_VYB_ID_OBJ_VYB = OB.ID_OBJEDNAVKA_VYBAVENI) ORDER BY ID_OBJEDNAVKA_VYBAVENI;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D7">
+                        <popis_dotazu>
+                                <para>Všechny lyžařské boty značky Atomic, které byly někdy půjčeny dětem mladším 15let. Pozn.: Uvažujeme, že každé dítě narozené od 1.1.2004 je mladší 15let.</para>
+                        </popis_dotazu>
+                            <relacni_algebra>{{{DITE(ROK_NAROZENI &gt;= 2004)
+    [ID_DITE = DITE_ID_DITE&gt;OBJ_VYBAVENI_DITE}
+    [OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI&gt;OBJEDNAVKA_VYBAVENI}
+    [ID_OBJEDNAVKA_VYBAVENI = OBJ_VYB_ID_OBJ_VYB&gt;OBJ_VYBAVENI_LYZ_BOTY}
+    [LYZARSKE_BOTY_ID_LYZARSKE_BOTY = ID_LYZARSKE_BOTY&gt;LYZARSKE_BOTY(ZNACKA = &#039;Atomic&#039;)</relacni_algebra>
+                            <sql>SELECT *
+FROM LYZARSKE_BOTY WHERE (ZNACKA = &#039;Atomic&#039;)
+AND ID_LYZARSKE_BOTY IN(
+    SELECT LB.ID_LYZARSKE_BOTY
+    FROM LYZARSKE_BOTY LB 
+    JOIN OBJ_VYBAVENI_LYZ_BOTY OVLB ON (LB.ID_LYZARSKE_BOTY = OVLB.LYZARSKE_BOTY_ID_LYZARSKE_BOTY) 
+    JOIN OBJEDNAVKA_VYBAVENI OV ON (OVLB.OBJ_VYB_ID_OBJ_VYB = OV.ID_OBJEDNAVKA_VYBAVENI) 
+    JOIN OBJ_VYBAVENI_DITE OVD ON (OV.ID_OBJEDNAVKA_VYBAVENI = OVD.OBJ_VYB_ID_OBJ_VYB) 
+    JOIN DITE D ON (OVD.DITE_ID_DITE = D.ID_DITE)
+    WHERE ROK_NAROZENI &gt;= 2004);</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D21">
+                        <popis_dotazu>
+                                <para>Počet objednávek, které udělali jednotliví zákazníci.</para>
+                        </popis_dotazu>
+                            <sql>SELECT ID_ZAKAZNIK, JMENO, PRIJMENI, 
+    (SELECT COUNT(1) FROM OBJEDNAVKA_VYUKY O WHERE O.ZAKAZNIK_ID_ZAKAZNIK = Z.ID_ZAKAZNIK) AS POCET_OBJEDNAVEK
+FROM ZAKAZNIK Z;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D2">
+                        <popis_dotazu>
+                                <para>Hodiny začínající v 9 hodin nebo později a končící ve 12 hodin nebo dříve, které učí instruktorka Helen.</para>
+                        </popis_dotazu>
+                            <sql>SELECT DISTINCT Z.JMENO AS JMENO_INSTRUKTORA, Z.PRIJMENI AS PRIJMENI_INSTRUKTORA, H.ID_HODINA_VYUKY AS ID_HODINA, H.DATUM, H.OD AS CAS_ZACATKU, H.DO AS CAS_KONCE, H.CENA
+FROM HODINA_VYUKY H
+JOIN INSTRUKTOR_HODINA IH ON (H.ID_HODINA_VYUKY = IH.HOD_VYUKY_ID_HOD_VYUKY)
+JOIN INSTRUKTOR I ON (IH.INSTR_ID_ZAMESTNANEC = I.ID_ZAMESTNANEC)
+JOIN ZAMESTNANEC Z ON (I.ID_ZAMESTNANEC = Z.ID_ZAMESTNANEC)
+WHERE H.OD &gt;= 9 AND H.DO &lt; 12 AND  Z.JMENO = &#039;Helen&#039;;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D22">
+                        <popis_dotazu>
+                                <para>Zaměstnanci, jejichž jméno začíná na H spolu se zaměstnanci, kteří bydlí ve Villachu.</para>
+                        </popis_dotazu>
+                            <sql>SELECT Z.ID_ZAMESTNANEC, Z.JMENO, Z.PRIJMENI, A.OBEC
+FROM ZAMESTNANEC Z JOIN ADRESA A ON (Z.ADRESA_ID_ADRESA = A.ID_ADRESA)
+WHERE Z.JMENO like &#039;H%&#039;
+UNION
+SELECT Z.ID_ZAMESTNANEC, Z.JMENO, Z.PRIJMENI, A.OBEC
+FROM ZAMESTNANEC Z JOIN ADRESA A ON (Z.ADRESA_ID_ADRESA = A.ID_ADRESA)
+WHERE A.OBEC = &#039;Villach&#039;;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D23">
+                        <popis_dotazu>
+                                <para>Instruktoři, kteří jsou experty a zároveň učí méně než 3 hodiny.</para>
+                        </popis_dotazu>
+                            <sql>SELECT I.*
+FROM INSTRUKTOR I
+WHERE I.UROVEN_KURZU = &#039;Expert&#039;
+INTERSECT
+SELECT I.*
+FROM INSTRUKTOR I
+JOIN INSTRUKTOR_HODINA IH ON (I.ID_ZAMESTNANEC = IH.INSTR_ID_ZAMESTNANEC)
+WHERE ((SELECT COUNT (1) FROM INSTRUKTOR_HODINA IH WHERE I.ID_ZAMESTNANEC = IH.INSTR_ID_ZAMESTNANEC) &lt; 3);</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D24">
+                        <popis_dotazu>
+                                <para>Zobraz seznam všech dětí podle jejich úrovně, u každé úrovně počet dětí.</para>
+                        </popis_dotazu>
+                            <sql>SELECT DISTINCT AKTUALNI_UROVEN, COUNT(ID_DITE)
+FROM DITE
+GROUP BY AKTUALNI_UROVEN;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D25">
+                        <popis_dotazu>
+                                <para>Jména a příjmení zákazníků a počet různých úrovní objednané výuky, jejíž celková cena byla větší než 1000 Kč. Nechť takoví zákazníci bydlí ve městě začínajícím na písmeno &#039;B&#039; a výpis buď seřazen sestupně podle křestních jmen.</para>
+                        </popis_dotazu>
+                            <sql>SELECT Z.JMENO, Z.PRIJMENI, A.OBEC, COUNT(DISTINCT OV.UROVEN) AS POCET_RUZNYCH_UROVNI, SUM(HV.CENA) AS CELKOVA_CENA
+FROM ZAKAZNIK Z
+JOIN DITE D ON (Z.ID_ZAKAZNIK = D.ZAKAZNIK_ID_ZAKAZNIK)
+JOIN ADRESA A ON (Z.ADRESA_ID_ADRESA = A.ID_ADRESA)
+JOIN OBJEDNAVKA_VYUKY OV ON (Z.ID_ZAKAZNIK = OV.ZAKAZNIK_ID_ZAKAZNIK)
+JOIN HODINA_VYUKY HV ON (OV.ID_OBJEDNAVKA_VYUKY = HV.OBJ_VYUKY_ID_OBJ_VYUKY)
+WHERE A.OBEC like &#039;B%&#039;
+GROUP BY Z.JMENO, Z.PRIJMENI, A.OBEC
+HAVING SUM(HV.CENA) &gt; 1000
+ORDER BY Z.JMENO DESC;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D27">
+                        <popis_dotazu>
+                                <para>Vytvoř pohled, který pro každou objednávku vypíše základní informace o ní (ID, datum začátku a konce, cenu) a dále počet jednotlivých druhů objednaného lyžařského vybavení.
+Následně vypiš, kolik kusů celkem bylo objednáno pro objednávky, kde je tento součet menší než 5 a zároveň objednávka obsahuje alespoň jedny snowboardové boty a alespoň jeden snowboard.</para>
+                        </popis_dotazu>
+                            <sql>CREATE OR REPLACE VIEW V_POCTY_OBJEDNAVEK AS
+    SELECT ID_OBJEDNAVKA_VYBAVENI,
+    DATUM_A_CAS_OD AS DATUM_OD,
+    DATUM_A_CAS_DO AS DATUM_DO,
+    CENA,
+    (SELECT COUNT(1) FROM OBJ_VYBAVENI_PRILBA WHERE (OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI)) AS POCET_OBJ_PRILEB,
+    (SELECT COUNT(1) FROM OBJ_VYBAVENI_HULKY WHERE (OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI)) AS POCET_OBJ_HULEK,
+    (SELECT COUNT(1) FROM OBJ_VYBAVENI_SNB_BOTY WHERE (OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI)) AS POCET_OBJ_SNB_BOT,
+    (SELECT COUNT(1) FROM OBJ_VYBAVENI_LYZ_BOTY WHERE (OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI)) AS POCET_OBJ_LYZARSKYCH_BOT,
+    (SELECT COUNT(1) FROM OBJ_VYBAVENI_SNB WHERE (OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI)) AS POCET_OBJ_SNOWBOARDU,
+    (SELECT COUNT(1) FROM OBJ_VYBAVENI_LYZE WHERE (OBJ_VYB_ID_OBJ_VYB = ID_OBJEDNAVKA_VYBAVENI)) AS POCET_OBJ_LYZI
+    FROM OBJEDNAVKA_VYBAVENI;
+
+SELECT ID_OBJEDNAVKA_VYBAVENI,
+DATUM_OD,
+DATUM_DO,
+POCET_OBJ_PRILEB+POCET_OBJ_HULEK+POCET_OBJ_SNB_BOT+POCET_OBJ_LYZARSKYCH_BOT+POCET_OBJ_SNOWBOARDU+POCET_OBJ_LYZI AS CELKOVY_POCET_OBJ_KUSU
+FROM V_POCTY_OBJEDNAVEK
+WHERE POCET_OBJ_PRILEB+POCET_OBJ_HULEK+POCET_OBJ_SNB_BOT+POCET_OBJ_LYZARSKYCH_BOT+POCET_OBJ_SNOWBOARDU+POCET_OBJ_LYZI &lt; 5 AND POCET_OBJ_SNB_BOT &gt; 0 AND POCET_OBJ_SNOWBOARDU &gt; 0;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D28">
+                        <popis_dotazu>
+                                <para>Příkaz probíhá pro takový počet objednávek, kolik je lyžařských bot s velkostí pro vázání větší než 300 mm, začíná se objednávkou č. 1 a postupuje se po řadě vzestupně. Do každé z těchto objednávek vloží příkaz po řadě jednu z popsaných bot.</para>
+                        </popis_dotazu>
+                            <sql>INSERT INTO OBJ_VYBAVENI_LYZ_BOTY(OBJ_VYB_ID_OBJ_VYB, LYZARSKE_BOTY_ID_LYZARSKE_BOTY)
+SELECT SEQ_ID_TMP.nextval, LB.ID_LYZARSKE_BOTY
+FROM LYZARSKE_BOTY LB
+WHERE LB.ZNACKA = &#039;Rossignol&#039; AND LB.VELIKOST_PRO_VAZANI &gt; 300;
+ROLLBACK;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D29">
+                        <popis_dotazu>
+                                <para>Všem hodinám výuky, které patří k objednávkám výuky na pokročilé úrovni, sniž cenu o 20 %.</para>
+                        </popis_dotazu>
+                            <sql>UPDATE HODINA_VYUKY SET CENA=CENA*0.8
+WHERE OBJ_VYUKY_ID_OBJ_VYUKY IN(
+    SELECT ID_OBJEDNAVKA_VYUKY
+    FROM OBJEDNAVKA_VYUKY
+    WHERE UROVEN = &#039;Pokrocily&#039;);
+ROLLBACK;</sql>
+                    </dotaz>
+                    <dotaz dotaz_id="D30">
+                        <popis_dotazu>
+                                <para>Ze všech objednávek vybavení pro děti, které umí carving, smaž objednávku snowboardových bot a snowboardů.</para>
+                        </popis_dotazu>
+                            <sql>DELETE FROM OBJ_VYBAVENI_SNB_BOTY
+WHERE OBJ_VYB_ID_OBJ_VYB IN(
+    SELECT OVD.OBJ_VYB_ID_OBJ_VYB
+    FROM OBJ_VYBAVENI_DITE OVD
+    JOIN DITE D ON (OVD.DITE_ID_DITE = D.ID_DITE)
+    WHERE D.AKTUALNI_UROVEN = &#039;carving&#039;);
+ROLLBACK;
+--------------------------------------------------------------------------------
+DELETE FROM OBJ_VYBAVENI_SNB
+WHERE OBJ_VYB_ID_OBJ_VYB IN(
+    SELECT OVD.OBJ_VYB_ID_OBJ_VYB
+    FROM OBJ_VYBAVENI_DITE OVD
+    JOIN DITE D ON (OVD.DITE_ID_DITE = D.ID_DITE)
+    WHERE D.AKTUALNI_UROVEN = &#039;carving&#039;);
+ROLLBACK;</sql>
+                    </dotaz>
+            </dotazy>
+            <pokryti_dotazu>
+                        <radek>
+                            <kategorie>A</kategorie>
+                            <odkazy>
+                                    <link url="#D4">D4</link>
+                                    <link url="#D11">D11</link>
+                                    <link url="#D9">D9</link>
+                                    <link url="#D10">D10</link>
+                                    <link url="#D14">D14</link>
+                                    <link url="#D8">D8</link>
+                                    <link url="#D17">D17</link>
+                                    <link url="#D18">D18</link>
+                                    <link url="#D19">D19</link>
+                                    <link url="#D7">D7</link>
+                                    <link url="#D2">D2</link>
+                                    <link url="#D22">D22</link>
+                                    <link url="#D23">D23</link>
+                                    <link url="#D25">D25</link>
+                                    <link url="#D30">D30</link>
+                            </odkazy>
+                            <kategorie_popis>A - Pozitivní dotaz nad spojením alespoň dvou tabulek</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>AR</kategorie>
+                            <odkazy>
+                                    <link url="#D4">D4</link>
+                                    <link url="#D11">D11</link>
+                                    <link url="#D9">D9</link>
+                                    <link url="#D10">D10</link>
+                                    <link url="#D8">D8</link>
+                                    <link url="#D7">D7</link>
+                            </odkazy>
+                            <kategorie_popis>A (RA) - Pozitivní dotaz nad spojením alespoň dvou tabulek</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>B</kategorie>
+                            <odkazy>
+                                    <link url="#D13">D13</link>
+                            </odkazy>
+                            <kategorie_popis>B - Negativní dotaz nad spojením alespoň dvou tabulek</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>C</kategorie>
+                            <odkazy>
+                                    <link url="#D9">D9</link>
+                            </odkazy>
+                            <kategorie_popis>C - Vyber ty, kteří mají vztah POUZE k ...</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>D1</kategorie>
+                            <odkazy>
+                                    <link url="#D10">D10</link>
+                            </odkazy>
+                            <kategorie_popis>D1 - Vyber ty, kteří/které jsou ve vztahu se všemi - dotaz s univerzální kvantifikací</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>D2</kategorie>
+                            <odkazy>
+                                    <link url="#D14">D14</link>
+                            </odkazy>
+                            <kategorie_popis>D2 - Kontrola výsledku dotazu z kategorie D1</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>F1</kategorie>
+                            <odkazy>
+                                    <link url="#D4">D4</link>
+                                    <link url="#D12">D12</link>
+                                    <link url="#D13">D13</link>
+                                    <link url="#D9">D9</link>
+                                    <link url="#D10">D10</link>
+                                    <link url="#D14">D14</link>
+                                    <link url="#D8">D8</link>
+                                    <link url="#D17">D17</link>
+                                    <link url="#D7">D7</link>
+                                    <link url="#D2">D2</link>
+                                    <link url="#D22">D22</link>
+                                    <link url="#D23">D23</link>
+                                    <link url="#D25">D25</link>
+                                    <link url="#D30">D30</link>
+                            </odkazy>
+                            <kategorie_popis>F1 - JOIN ON</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>F1R</kategorie>
+                            <odkazy>
+                                    <link url="#D4">D4</link>
+                                    <link url="#D12">D12</link>
+                                    <link url="#D13">D13</link>
+                                    <link url="#D9">D9</link>
+                                    <link url="#D10">D10</link>
+                                    <link url="#D8">D8</link>
+                                    <link url="#D7">D7</link>
+                            </odkazy>
+                            <kategorie_popis>F1 (RA) - JOIN ON</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>F2</kategorie>
+                            <odkazy>
+                                    <link url="#D11">D11</link>
+                            </odkazy>
+                            <kategorie_popis>F2 - NATURAL JOIN|JOIN USING</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>F3</kategorie>
+                            <odkazy>
+                                    <link url="#D15">D15</link>
+                            </odkazy>
+                            <kategorie_popis>F3 - CROSS JOIN</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>F4</kategorie>
+                            <odkazy>
+                                    <link url="#D18">D18</link>
+                                    <link url="#D19">D19</link>
+                            </odkazy>
+                            <kategorie_popis>F4 - LEFT|RIGHT OUTER JOIN</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>F5</kategorie>
+                            <odkazy>
+                                    <link url="#D19">D19</link>
+                            </odkazy>
+                            <kategorie_popis>F5 - FULL (OUTER) JOIN</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>G1</kategorie>
+                            <odkazy>
+                                    <link url="#D10">D10</link>
+                                    <link url="#D14">D14</link>
+                                    <link url="#D16">D16</link>
+                                    <link url="#D17">D17</link>
+                                    <link url="#D7">D7</link>
+                                    <link url="#D29">D29</link>
+                                    <link url="#D30">D30</link>
+                            </odkazy>
+                            <kategorie_popis>G1 - Vnořený dotaz v klauzuli WHERE</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>G1R</kategorie>
+                            <odkazy>
+                                    <link url="#D10">D10</link>
+                                    <link url="#D16">D16</link>
+                                    <link url="#D7">D7</link>
+                            </odkazy>
+                            <kategorie_popis>G1 (RA) - Vnořený dotaz v klauzuli WHERE</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>G2</kategorie>
+                            <odkazy>
+                                    <link url="#D9">D9</link>
+                            </odkazy>
+                            <kategorie_popis>G2 - Vnořený dotaz v klauzuli FROM</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>G3</kategorie>
+                            <odkazy>
+                                    <link url="#D21">D21</link>
+                                    <link url="#D27">D27</link>
+                            </odkazy>
+                            <kategorie_popis>G3 - Vnořený dotaz v klauzuli SELECT</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>G4</kategorie>
+                            <odkazy>
+                                    <link url="#D10">D10</link>
+                                    <link url="#D14">D14</link>
+                                    <link url="#D17">D17</link>
+                            </odkazy>
+                            <kategorie_popis>G4 - Vztažený vnořený dotaz (EXISTS, NOT EXISTS)</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>G4R</kategorie>
+                            <odkazy>
+                                    <link url="#D10">D10</link>
+                            </odkazy>
+                            <kategorie_popis>G4 (RA) - Vztažený vnořený dotaz (EXISTS, NOT EXISTS)</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>H1</kategorie>
+                            <odkazy>
+                                    <link url="#D22">D22</link>
+                            </odkazy>
+                            <kategorie_popis>H1 - Množinové sjednocení - UNION</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>H2</kategorie>
+                            <odkazy>
+                                    <link url="#D9">D9</link>
+                                    <link url="#D14">D14</link>
+                                    <link url="#D16">D16</link>
+                                    <link url="#D17">D17</link>
+                            </odkazy>
+                            <kategorie_popis>H2 - Množinový rozdíl - MINUS nebo EXCEPT</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>H2R</kategorie>
+                            <odkazy>
+                                    <link url="#D9">D9</link>
+                                    <link url="#D16">D16</link>
+                            </odkazy>
+                            <kategorie_popis>H2 (RA) - Množinový rozdíl - MINUS nebo EXCEPT</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>H3</kategorie>
+                            <odkazy>
+                                    <link url="#D23">D23</link>
+                            </odkazy>
+                            <kategorie_popis>H3 - Množinový průnik - INTERSECT</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>I1</kategorie>
+                            <odkazy>
+                                    <link url="#D21">D21</link>
+                                    <link url="#D23">D23</link>
+                                    <link url="#D24">D24</link>
+                                    <link url="#D25">D25</link>
+                                    <link url="#D27">D27</link>
+                            </odkazy>
+                            <kategorie_popis>I1 - Agregační funkce (count|sum|min|max|avg)</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>I2</kategorie>
+                            <odkazy>
+                                    <link url="#D24">D24</link>
+                                    <link url="#D25">D25</link>
+                            </odkazy>
+                            <kategorie_popis>I2 - Agregační funkce nad seskupenými řádky - GROUP BY (HAVING)</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>J</kategorie>
+                            <odkazy>
+                                    <link url="#D17">D17</link>
+                            </odkazy>
+                            <kategorie_popis>J - Stejný dotaz ve třech různých formulacích SQL</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>K</kategorie>
+                            <odkazy>
+                                    <link url="#D25">D25</link>
+                            </odkazy>
+                            <kategorie_popis>K - Všechny klauzule v 1 dotazu - SELECT FROM WHERE GROUP BY HAVING ORDER BY</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>L</kategorie>
+                            <odkazy>
+                                    <link url="#D27">D27</link>
+                            </odkazy>
+                            <kategorie_popis>L - VIEW</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>M</kategorie>
+                            <odkazy>
+                                    <link url="#D27">D27</link>
+                            </odkazy>
+                            <kategorie_popis>M - Dotaz nad pohledem</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>N</kategorie>
+                            <odkazy>
+                                    <link url="#D28">D28</link>
+                            </odkazy>
+                            <kategorie_popis>N - INSERT, který vloží do některé tabulky množinu řádků, které jsou vybrány dotazem z vybraných tabulek (příkaz INSERT, ve kterém je klauzule VALUES nahrazena vnořeným poddotazem.</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>O</kategorie>
+                            <odkazy>
+                                    <link url="#D29">D29</link>
+                            </odkazy>
+                            <kategorie_popis>O - UPDATE s vnořeným SELECT příkazem</kategorie_popis>
+                        </radek>
+                        <radek>
+                            <kategorie>P</kategorie>
+                            <odkazy>
+                                    <link url="#D30">D30</link>
+                            </odkazy>
+                            <kategorie_popis>P - DELETE s vnořeným SELECT příkazem</kategorie_popis>
+                        </radek>
+            </pokryti_dotazu>
+        </queries>
+        <scripts>
+            <title>Scripts</title>
+            <para>
+                <link url="./create.sql">create.sql</link>
+            </para>
+            <para>
+                <link url="./insert.sql">insert.sql</link>
+            </para>
+        </scripts>
+        <conclussions>
+            <title>Závěr</title>
+                    <para>Tvorba této semestrální práce mě naučila, jak nad databázemi přemýšlet a jaké zásady dodržovat při jejich návrhu. K osvojení druhé dovednosti mi jistě pomohlo obrovské množství chyb, které na mě chrlil Oracle SQL Developer, nutno ovšem podotknout, že za většinu z nich jsem si mohl sám. Proč se ale ISA správně transformuje při opakování stále stejného posupu až na šestý pokus, mi je dodnes záhadou a nejspíš tak zůstane i v budoucnu.</para>
+                    <para>Díky tvorbě dotazů jsem poznal relační algebru a základy SQL, jistě jsem nyní trénovanější ve správné konstrukci složitějších dotazů s vnořeným výběrem a podobně, shledávám však, že například agregační funkce a koneckonců i tvorba složitějších dotazů budou i v rámci rozsahu BI-DBS vyžadovat další procvičování.</para>
+        </conclussions>
+        <references>
+            <title>Zdroje</title>
+                    <para>1. Stránky předmětu BI-DBS - https://courses.fit.cvut.cz-BI-DBS/</para>
+                    <para>2. Původní (stará) verze &quot;vzorové&quot; semestrální práce umístěná na adrese: https://users.fit.cvut.cz/~valenta/BI-DBS/semestralka/ukazka/main.xml.</para>
+                    <para>3. Nová verze &quot;vzorové&quot; semestrální práce umístěná na adrese: https://users.fit.cvut.cz/~hunkajir/dbs/main.xml#tabulka_pokryti, zejména pomocné procedury v create scriptu.</para>
+                    <para>4. Malina Ski School Bukovec http://www.malinaski.cz. Motiv lyžařské školy a jméno Malina ski school byly pro tuto semestrální práci využity s laskavým svolením majitele,  pana Petra Maligy.</para>
+        </references>
+    </content>
+</sproject>
