@@ -19,3 +19,6 @@ Simple graphic editor that loads the input image, processes selected graphic ope
 `conda env create -f environment.yml`
 `conda activate bipyt`  
 `python3 graphic_editor.py` `[--rotate]` `[--mirror]` `[--inverse]` `[--bw]` `[--lighten <0; 100>]` `[--darken <0;100>]` `[--sharpen]` `INPUT_IMAGE_PATH` `OUTPUT_IMAGE_PATH`
+
+## Results
+Got **30/30** points.
