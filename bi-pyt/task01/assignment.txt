@@ -1,0 +1,43 @@
+# Homework 01 - Game of life
+# 
+# Your task is to implement part of the cell automata called
+# Game of life. The automata is a 2D simulation where each cell
+# on the grid is either dead or alive.
+# 
+# State of each cell is updated in every iteration based state of neighbouring cells.
+# Cell neighbours are cells that are horizontally, vertically, or diagonally adjacent.
+#
+# Rules for update are as follows:
+# 
+# 1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+# 2. Any live cell with two or three live neighbours lives on to the next generation.
+# 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
+# 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+#
+# 
+# Our implementation will use coordinate system will use grid coordinates starting from (0, 0) - upper left corner.
+# The first coordinate is row and second is column.
+# 
+# Do not use wrap around (toroid) when reaching edge of the board.
+# 
+# For more details about Game of Life, see Wikipedia - https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+
+# Neighbours:
+# 218
+# 3X7
+# 456
+
+# Coordinates of neighbours:
+# X->  x  |  y
+# 1-> x-1 |  y
+# 2-> x-1 | y-1
+# 3->  x  | y-1
+# 4-> x+1 | y-1
+# 5-> x+1 |  y
+# 6-> x+1 | y+1
+# 7->  x  | y+1
+# 8-> x-1 | y+1
+
+# Implementation notes:
+#  - all_cells are represented as a set
+#  - valid_alive_cells are represented as a list
