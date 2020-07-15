@@ -16,7 +16,7 @@ This repository contains code I've written during my studies at Faculty of Infor
 * [BI-AG1](/bi-ag1): **Algorithms and Graphs 1**
 * [BI-PYT](/bi-pyt): **Programming in Python**
 * [BI-PYT - Semestral project](/bi-pyt-graphic-editor) **Semestral project for Prgramming in Python - Simple photoshop**
-* [BI-ZNS](/bi-zns): **Knowledge systems** :warning: TBP
+* [BI-ZNS](/bi-zns): **Knowledge systems**
 
 ### 4th semester
 * [BI-BEZ](/bi-bez): **Security** :warning: TBP

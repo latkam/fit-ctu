@@ -1,0 +1,17 @@
+# Write your rules to this file
+# Rules could be on more lines, but must end with semicolon (;)
+# You can use hash tag for comment lines, block comments are not supported
+# Grammar definition is described in documentation
+
+
+IF player_dont_have_base AND free_tile* mountain THEN build_base 3 3 WITH 1;
+
+IF player_has_base AND ideal_tile* AND money >= 12 AND money < 60 AND current_round <= 15 THEN build_knight   ideal_tile WITH 1;
+IF player_has_base AND ideal_tile* AND money >= 30                AND current_round <= 15 THEN build_magician ideal_tile WITH 1;
+
+IF player_has_base AND money >= 12 AND money < 60 AND position_first_round* AND current_round > 15 THEN build_knight   position_first_round WITH 0.6;
+IF player_has_base AND money >= 30                AND position_first_round* AND current_round > 15 THEN build_magician position_first_round WITH 0.6;
+
+
+IF player_has_base AND money >= 12 AND money < 60 AND position_second_round* THEN build_knight   position_second_round WITH 0.4;
+IF player_has_base AND money >= 30                AND position_second_round* THEN build_magician position_second_round WITH 0.4;

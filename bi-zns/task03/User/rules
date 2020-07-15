@@ -1,0 +1,31 @@
+# Write your rules to this file
+# Rules could be on more lines, but must end with semicolon (;)
+# You can use hash tag for comment lines, block comments are not supported
+# Grammar definition is described in documentation
+
+
+#----------BUILD BASE----------#
+IF player_dont_have_base AND free_tile mountain THEN build_base 3 3;
+
+
+#----------FUZZY RULES----------#
+IF (fuzzy_money rich OR fuzzy_money middle_class) AND fuzzy_nmb_guards few     THEN fuzzy_place_strong_guards := many;
+IF (fuzzy_money rich OR fuzzy_money middle_class) AND fuzzy_nmb_guards average THEN fuzzy_place_strong_guards := average;
+IF (fuzzy_money rich OR fuzzy_money middle_class) AND fuzzy_nmb_guards many    THEN fuzzy_place_strong_guards := few;
+
+IF (fuzzy_money poor OR fuzzy_money middle_class) AND fuzzy_nmb_guards few     THEN fuzzy_place_weak_guards := many;
+IF (fuzzy_money poor OR fuzzy_money middle_class) AND fuzzy_nmb_guards average THEN fuzzy_place_weak_guards := average;
+IF (fuzzy_money poor OR fuzzy_money middle_class) AND fuzzy_nmb_guards many    THEN fuzzy_place_weak_guards := few;
+
+
+#----------STANDARD RULES----------#
+IF (fuzzy_money rich OR fuzzy_money middle_class) AND position_first_round* THEN build_magician position_first_round;
+IF (fuzzy_money middle_class OR fuzzy_money poor) AND money > 12  AND position_first_round* THEN build_knight position_first_round;
+
+IF (fuzzy_money rich OR fuzzy_money middle_class) AND position_second_round* THEN build_magician position_first_round;
+IF (fuzzy_money middle_class OR fuzzy_money poor) AND money > 12  AND position_second_round* THEN build_knight position_second_round;
+
+IF (fuzzy_money rich OR fuzzy_money middle_class) AND position_third_round* THEN build_magician position_third_round;
+IF (fuzzy_money middle_class OR fuzzy_money poor) AND money > 12  AND position_third_round* THEN build_knight position_third_round;
+
+
