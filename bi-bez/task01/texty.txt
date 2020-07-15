@@ -1,0 +1,10 @@
+tajna prvni zprava normalne:                    tajnazpravakteramepravenapadla
+tajna prvni zprava hexadecimalne:               74616a6e617a70726176616b746572616d6570726176656e617061646c61
+zasifrovana tajna prvni zprava hexadecimalne:   eb96e7ccd4d02a0f9a09f11ff813269a0bc1cd38dff20282fad89e9023bf
+
+verejna druha zprava normalne:            abcdefghijklmnopqrstuvwxyz0123
+verejna druha zprava hexadecimalne        6162636465666768696a6b6c6d6e6f707172737475767778797a30313233
+zasifrovana verejna zprava hexadecimalne: fe95eec6d0cc3d159215fb18e1183b8b17d6ce3ecbf21094e2d2cfc57ded
+
+klic: uniquesecretkey
+inicializacni vektor: jinyvector

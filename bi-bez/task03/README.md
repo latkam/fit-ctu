@@ -1,0 +1,4 @@
+- kompilace: `make`
+- spuštění: `make run`
+- kontrola správnosti šifrování a dešifrování: `make diff`
+- smazání **.o** souborů: `make clean`

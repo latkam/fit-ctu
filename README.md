@@ -19,7 +19,7 @@ This repository contains code I've written during my studies at Faculty of Infor
 * [BI-ZNS](/bi-zns): **Knowledge systems**
 
 ### 4th semester
-* [BI-BEZ](/bi-bez): **Security** :warning: TBP
+* [BI-BEZ](/bi-bez): **Security**
 * [BI-OSY](/bi-osy): **Operating Systems** :warning: TBP
 * [BI-PSI](/bi-psi): **Computer Networks** :warning: TBP
 * [BI-SVZ](/bi-svz): **Computer Vision and Image Processing** :warning: TBP
