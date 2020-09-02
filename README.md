@@ -24,4 +24,4 @@ This repository contains code I've written during my studies at Faculty of Infor
 * [BI-PSI](/bi-psi): **Computer Networks** :warning: TBP
 * [BI-SVZ](/bi-svz): **Computer Vision and Image Processing** :warning: TBP
 * [BI-ZUM](/bi-zum): **Artificial Intelligence Fundamentals**
-* [BI-ZUM - Semestral project](/bi-zum-sudoku-csp) **Semetral project for Artificial Intelligence Fundamentals - Sudoku for 100 % (CSP)** :warning: TBP
+* [BI-ZUM - Semestral project](/bi-zum-sudoku-csp) **Semetral project for Artificial Intelligence Fundamentals - Sudoku for 100 % (CSP)**
