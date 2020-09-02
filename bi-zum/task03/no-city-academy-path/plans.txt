@@ -1,0 +1,66 @@
+Plan marriage:
+go harbour river (1)
+go river forest (1)
+cut-flowers  (1)
+fight-bear  (1)
+cut-wood-forest  (1)
+build-boat  (1)
+go forest river (1)
+go river harbour (1)
+trade-bearskin  (1)
+go harbour city (1)
+invest  (1)
+go city harbour (1)
+sail-boat harbour lighthouse (1)
+impress-girl  (1)
+sail-boat lighthouse sea (1)
+dive-for-pearl  (1)
+sail-boat sea island (1)
+make-ring  (1)
+marriage  (1)
+Plan length: 19 step(s).
+Plan cost: 19
+
+
+
+Plan admiral:
+Initial state is a dead end.
+Plan does not exist.
+
+
+Plan cocaine:
+work  (1)
+go harbour pub (1)
+buy-alcohol  (1)
+go pub harbour (1)
+go harbour river (1)
+steal-boat  (1)
+go river forest (1)
+cut-wood-forest  (1)
+fight-bear  (1)
+meet-magic-old-man  (1)
+go forest river (1)
+go river harbour (1)
+trade-bearskin  (1)
+build-caravel  (1)
+sail-caravel harbour sea (1)
+join-pirates  (1)
+defeat-pirates  (1)
+sail-caravel sea island (1)
+get-cocaine  (1)
+sail-caravel island sea (1)
+sail-caravel sea harbour (1)
+meet-smugglers  (1)
+go harbour pub (1)
+buy-alcohol  (1)
+go pub harbour (1)
+work  (1)
+go harbour pub (1)
+get-drunk  (1)
+buy-alcohol  (1)
+become-alcohol-addict  (1)
+become-cocaine-addict  (1)
+Plan length: 31 step(s).
+Plan cost: 31
+
+

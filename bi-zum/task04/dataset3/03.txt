@@ -1,0 +1,13 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X                         X                       X   X
+X  XX XXXX   X  XXXXX XXXXX  X  XXXX   XXXX X X   X X X
+X X                       X   X       X       X X X X X
+X   XX X XXXXXXX XXXX X   XX  XXX  X    XX XXX  X XXX X
+X       X                 X           X         X     X
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+start 43, 3
+end 15, 5
+start 2, 1
+end 13, 5
+start 43, 3
+end 15, 5

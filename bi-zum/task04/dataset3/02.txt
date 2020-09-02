@@ -1,0 +1,67 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+X                                                                     X
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+start 20, 30
+end 65, 1
+start 20, 10
+end 60, 20
+start 20, 10
+end 60, 20
+start 20, 10
+end 60, 20
+start 20, 10
+end 60, 20
+start 20, 10
+end 60, 20
+start 20, 10
+end 60, 20
+start 20, 10
+end 60, 20
