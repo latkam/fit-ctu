@@ -5,7 +5,7 @@
 - task03: **10/10** points
 - task04: **10/10** points
 
-## Task 1 State space exploration
+## Task 01 State space exploration
 Implements algorithms for the state space exploration such as Random Search,
 Depth-first search (DFS), Breadth-first search (BFS), Greedy search, Dijkstra's
 algorithm and A*.
@@ -21,10 +21,10 @@ g++ -std=c++17 -Wall -pedantic -Wextra -g main.cpp
 ./a.out <random/dfs/bfs/greedy/dijkstra/astar> < dataset/<filename>.txt
 ```
 
-## Task 2 Genetic algorithm
+## Task 02 Genetic algorithm
 Not assigned due to the `COVID-19` pandemic.
 
-## Task 3 Automatic planning
+## Task 03 Automatic planning
 Automatic planning using `PDDL`.
 
 **Run**: 
@@ -33,7 +33,7 @@ Download and install the [Fast Downward planner](http://www.fast-downward.org).
 cd 03/main-task
 ./fast-downward.py domain.pddl task.pddl --search "astar(lmcut())"
 ```
-## Task 4 Cooperative Pathfinding
+## Task 04 Cooperative Pathfinding
 Implements cooperative pathfinding using Cooperative A* algorithm. More about this topic can be found [here](https://www.aaai.org/Papers/AIIDE/2005/AIIDE05-020.pdf).
 
 **Compile**:
