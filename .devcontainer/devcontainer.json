@@ -1,0 +1,11 @@
+{
+    "name": "Fit CTU Dev Container",
+    "dockerComposeFile": "docker-compose.yaml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "terminal.integrated.defaultProfile.linux": "zsh"
+        }
+    }
+}

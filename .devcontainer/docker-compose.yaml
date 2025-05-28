@@ -1,0 +1,11 @@
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace
+      - ~/.git:/home/dockeruser/.git
+      - ~/.ssh:/home/dockeruser/.ssh
+    working_dir: /workspace
+    tty: true
