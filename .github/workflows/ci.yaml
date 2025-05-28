@@ -1,0 +1,29 @@
+name: CI
+
+on: push
+
+jobs:
+  setup:
+    name: Setup
+    uses: ./.github/workflows/setup.yaml
+  # docker_image:
+    # uses: ./.github/workflows/docker_image.yaml
+# 
+# default platform is ubuntu-24.04 if not specified otherwise
+# 
+# Setup/Select Jobs
+# DevEnv/Build Docker Image/matrix linux x64 tag: ubuntu-24.04
+                                #  windows x64 tag: windows-2025
+                                #  linux arm64 tag: ubuntu-24.04-arm
+                                #  windows arm64 tag: windows-11-arm
+                                #  macos intel tag: macos-13
+                                #  macos arm64 tag: macos-14
+# verify pre commit hooks
+# Code Style/C++
+          # /Markdown https://github.com/markdownlint/markdownlint
+          # /Python
+# Build matrix per arch
+# Docs (PA2)
+# Test matrix per arch
+  # - bi-zum-sudoku-csp
+

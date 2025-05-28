@@ -1,0 +1,35 @@
+name: Setup
+on: workflow_call
+
+jobs:
+  select_jobs:
+    name: Select Jobs
+    runs-on: ubuntu-24.04
+    outputs:
+      workflows: ${{ steps.check_changed_files.outputs.workflows_any_changed }}
+      devcontainer: ${{ steps.check_changed_files.outputs.devcontainer_any_changed }}
+      commands: ${{ steps.check_changed_files.outputs.commands_any_changed }}
+      markdown: ${{ steps.check_changed_files.outputs.markdown_any_changed }}
+      docs: ${{ steps.check_changed_files.outputs.docs_any_changed }}
+      cpp: ${{ steps.check_changed_files.outputs.cpp_any_changed }}
+      python: ${{ steps.check_changed_files.outputs.python_any_changed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Check which files have changed
+        id: check_changed_files
+        uses: step-security/changed-files@v45
+        with:
+          files_yaml_from_source_file: .github/filter_groups.yaml
+      - name: Log results
+        run: |
+          echo "workflows changed: ${{ steps.check_changed_files.outputs.workflows_any_changed }}"
+          echo "devcontainer changed: ${{ steps.check_changed_files.outputs.devcontainer_any_changed }}"
+          echo "commands changed: ${{ steps.check_changed_files.outputs.commands_any_changed }}"
+          echo "markdown changed: ${{ steps.check_changed_files.outputs.markdown_any_changed }}"
+          echo "docs changed: ${{ steps.check_changed_files.outputs.docs_any_changed }}"
+          echo "cpp changed: ${{ steps.check_changed_files.outputs.cpp_any_changed }}"
+          echo "python changed: ${{ steps.check_changed_files.outputs.python_any_changed }}"
+  

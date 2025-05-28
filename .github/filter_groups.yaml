@@ -1,0 +1,26 @@
+workflows:
+  - '.github/workflows/**/*.yaml'
+
+devcontainer:
+  - '.devcontainer/**/*'
+
+commands:
+  - 'Makefile'
+
+markdown:
+  - '**.md'
+
+docs:
+  - 'bi-pa2-pacman/**/*'
+
+cpp:
+  - '**.cpp'
+  - '**.c'
+  - '*.hpp'
+  - '**.h'
+  - 'Makefile'
+
+python:
+  - '**.py'
+  - 'pyproject.toml'
+
