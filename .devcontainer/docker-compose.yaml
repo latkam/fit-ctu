@@ -2,7 +2,7 @@ services:
   devcontainer:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
     volumes:
       - ..:/workspace
       - ~/.git:/home/dockeruser/.git
